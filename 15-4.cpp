@@ -6,7 +6,31 @@ class Node
 public:
     int value;
     Node *Next;
+
+    // Constructor
+    Node(int val)
+    {
+        value = val;
+        Next = NULL;
+    }
 };
+
+void insertTail(Node *&head, int val)
+{
+    Node *newNode = new Node(val);
+    if (head == NULL)
+    {
+        head = newNode;
+        return;
+    }
+
+    Node *temp = head;
+    while (temp->Next != NULL)
+    {
+        temp = temp->Next;
+    }
+    temp->Next = newNode;
+}
 
 void display(Node *n)
 {
@@ -23,8 +47,9 @@ void display(Node *n)
 
 int main()
 {
-    Node *head = new Node();
-    Node *second = new Node();
+    Node *head = NULL;
+    insertTail(head, 1);
+    /* Node *second = new Node();
     Node *third = new Node();
     Node *fourth = new Node();
     head->value = 1;
@@ -35,7 +60,7 @@ int main()
     head->Next = second;
     second->Next = third;
     third->Next = fourth;
-    fourth->Next = NULL;
+    fourth->Next = NULL; */
     display(head);
     return 0;
 }

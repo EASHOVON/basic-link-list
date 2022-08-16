@@ -7,9 +7,10 @@ public:
     int value;
     Node *Next;
 
-    // Constructor
+    // Constructor Creating
     Node(int val)
     {
+        // Initializing value and next member
         value = val;
         Next = NULL;
     }
@@ -48,19 +49,16 @@ void display(Node *n)
 int main()
 {
     Node *head = NULL;
-    insertTail(head, 1);
-    /* Node *second = new Node();
-    Node *third = new Node();
-    Node *fourth = new Node();
-    head->value = 1;
-    second->value = 4;
-    third->value = 5;
-    fourth->value = 8;
-
-    head->Next = second;
-    second->Next = third;
-    third->Next = fourth;
-    fourth->Next = NULL; */
+    int n;
+    char ch = 'Y';
+    while (ch == 'Y')
+    {
+        cout << "Enter a number: ";
+        cin >> n;
+        insertTail(head, n);
+        cout << "Do you want to continue (Y/N)? ";
+        cin >> ch;
+    }
     display(head);
     return 0;
 }

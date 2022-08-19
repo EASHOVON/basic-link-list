@@ -16,7 +16,7 @@ public:
     }
 };
 
-void insertTail(Node *&head, int val)
+void insertAtTail(Node *&head, int val)
 {
     Node *newNode = new Node(val);
     if (head == NULL)
@@ -31,6 +31,15 @@ void insertTail(Node *&head, int val)
         temp = temp->Next;
     }
     temp->Next = newNode;
+}
+
+void insertAtHead(Node *&head, int val)
+{
+    // 1st step: NewNode Creation
+    Node *newNode = new Node(val);
+    // 2nd step: Update
+    newNode->Next = head;
+    head = newNode;
 }
 
 void display(Node *n)
@@ -50,14 +59,20 @@ int main()
 {
     Node *head = NULL;
     int n;
-    char ch = 'Y';
-    while (ch == 'Y')
+    cout << "Choice 1: Insertion at head" << endl
+         << "Choice 2: Insertion at tail" << endl
+         << "Choice 3: Exit" << endl << endl;
+    int choice = 2;
+    while (choice == 1 || choice == 2)
     {
-        cout << "Enter a number: ";
+        cout << "Enter the value: ";
         cin >> n;
-        insertTail(head, n);
-        cout << "Do you want to continue (Y/N)? ";
-        cin >> ch;
+        if (choice == 1)
+            insertAtHead(head, n);
+        else if (choice == 2)
+            insertAtTail(head, n);
+        cout << "Next Choice: ";
+        cin >> choice;
     }
     display(head);
     return 0;
